@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/create-game']">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mis juegos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="games" class="list-mini-content" padding>
+  <div *ngIf="games.length > 0" class="list-mini">
+    <ion-list>
+      <ion-item *ngFor="let game of games">
+        <ion-thumbnail slot="start">
+          <img alt="" [src]="game.payload.doc.data().image">
+        </ion-thumbnail>
+        <ion-label>{{game.payload.doc.data().name}}</ion-label>
+        <ion-button fill="clear" slot="end" [routerLink]="['/edit-game', game.payload.doc.id]">Editar</ion-button>
+        <ion-button fill="clear" slot="end" (click)="deleteGame(game.payload.doc.id)">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="empty-list" *ngIf="games.length == 0">
+    No has creado ningún juego.
+  </div>
+</ion-content>

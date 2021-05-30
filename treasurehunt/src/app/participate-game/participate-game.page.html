@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button slot="end" [routerLink]="['/manage-games']">{{player.username}}</ion-button>
+      <ion-button>
+        <div>
+          <ion-icon slot="icon-only" title="Prueba" name="game-controller-outline"></ion-icon>
+            <label>{{player.totalplayed}}</label>
+        </div>
+      </ion-button>
+      <ion-button>
+        <div>
+          <ion-icon slot="icon-only" name="trophy-outline"></ion-icon>
+            <label>{{player.totalscore}}</label>
+        </div>
+      </ion-button>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Jugar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="games" class="list-mini-content" padding>
+  <div *ngIf="games.length > 0" class="list-mini">
+    <ion-list>
+      <ion-item *ngFor="let game of games">
+        <ion-thumbnail slot="start">
+          <img alt="" [src]="game.payload.doc.data().image">
+        </ion-thumbnail>  
+        <ion-label>{{game.payload.doc.data().name}}</ion-label>
+        <ion-button *ngIf="checkIfPlayed(game.payload.doc.id)" fill="clear" slot="end" [routerLink]="['/game-results/', game.payload.doc.id]">Ver resultados</ion-button>
+        <ion-button *ngIf="!checkIfPlayed(game.payload.doc.id)" fill="clear" slot="end" [routerLink]="['/play-game/', game.payload.doc.id]">Jugar</ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="empty-list" *ngIf="games.length == 0">
+    No hay ningún juego disponible.
+  </div>
+</ion-content>

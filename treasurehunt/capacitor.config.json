@@ -1,0 +1,13 @@
+{
+  "appId": "com.dah.treasurehunt",
+  "appName": "treasurehunt",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

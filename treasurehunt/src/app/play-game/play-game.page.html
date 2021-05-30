@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Jugar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{game.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <img alt="" [src]="game.image" width="400px">
+      </ion-item>
+      <ion-item>{{game.description}}</ion-item>
+      <form class="form" [formGroup]="formValidation" (ngSubmit)="onSubmit(formValidation.value)">
+        <ion-item>
+          <ion-input placeholder="Tu solución (vertical-horizontal)" type="text" formControlName="mysolution"></ion-input>
+          <ion-button type="submit" [disabled]="!formValidation.valid">Resolver</ion-button>
+        </ion-item>
+        <div>
+          <ng-container *ngFor="let validation of formValidationMessages.mysolution">
+            <div class="error-message" *ngIf="formValidation.get('mysolution').hasError(validation.type) &&
+      (formValidation.get('mysolution').dirty || formValidation.get('mysolution').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

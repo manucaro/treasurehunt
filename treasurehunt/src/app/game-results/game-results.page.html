@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="participate-game"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Resultados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{gameResults.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <img alt="" [src]="gameResults.image">
+      </ion-item>
+      <ion-item>Descripción: {{gameResults.description}}</ion-item>
+      <ion-item>Respuesta: {{gameResults.mysolution}}</ion-item>
+      <ion-item>Solución: {{gameResults.solution}}</ion-item>
+      <ion-item>Puntos obtenidos: {{gameResults.myscore}}</ion-item>
+      <ion-item>Fecha: {{gameResults.date}}</ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

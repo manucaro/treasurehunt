@@ -1,0 +1,7 @@
+{
+  "name": "treasurehunt",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

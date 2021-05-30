@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="navToLogin()">
+        <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="titleicon">
+      <img src="https://www.leostickers.es/prod_imgs/[SchedaProdotto@2x]Prod_5105__vinilos-decorativos-bebe-Mapa-del-tesoro-amarilla.png.aspx" width="50px"/>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-toolbar id="ion-toolbar-home">
+      <ion-title id="ion-title">
+        Juego de caza del tesoro
+      </ion-title>
+    </ion-toolbar>
+    <ion-button (click)="navToManageGames()">Gestión de mis juegos</ion-button>
+    <ion-button (click)="navToParticipateGame()">Participar en los juegos</ion-button>
+  </div>
+</ion-content>
+
